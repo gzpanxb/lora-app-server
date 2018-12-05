@@ -1,34 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Router, Route, IndexRoute, hashHistory } from 'react-router';
+import React from "react";
+import ReactDOM from "react-dom";
 
-import Layout from './Layout';
-import ListNodes from './views/nodes/ListNodes';
-import NodeDetails from './views/nodes/NodeDetails';
-import CreateNode from "./views/nodes/CreateNode";
-import NodeSessionDetails from "./views/nodes/NodeSessionDetails";
-import ChannelLists from "./views/channels/ChannelLists";
-import ChannelListDetails from "./views/channels/ChannelListDetails";
-import CreateChannelList from "./views/channels/CreateChannelList";
-import JWTToken from "./views/jwt/JWTToken";
+import "typeface-roboto";
+import Leaflet from "leaflet";
 
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootswatch/paper/bootstrap.css';
-import './index.css';
+import App from "./App";
 
+import "leaflet/dist/leaflet.css";
+import "codemirror/lib/codemirror.css";
+import "codemirror/theme/base16-light.css";
+import "./index.css";
 
-ReactDOM.render(
-  <Router history={hashHistory}>
-    <Route path="/" component={Layout}>
-      <IndexRoute component={ListNodes}></IndexRoute>
-      <Route path="nodes/create" component={CreateNode}></Route>
-      <Route path="nodes/:devEUI/session" component={NodeSessionDetails}></Route>
-      <Route path="nodes/:devEUI" component={NodeDetails}></Route>
-      <Route path="channels" component={ChannelLists}></Route>
-      <Route path="channels/create" component={CreateChannelList}></Route>
-      <Route path="channels/:id" component={ChannelListDetails}></Route>
-      <Route path="jwt" component={JWTToken}></Route>
-    </Route>
-  </Router>,
-  document.getElementById('root')
-);
+Leaflet.Icon.Default.imagePath = "//cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.0/images/"
+
+ReactDOM.render(<App />, document.getElementById("root"));
